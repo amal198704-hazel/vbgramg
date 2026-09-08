@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="manifest" href="manifest.json">
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('./sw.js');
-  }
-</script>
   <title>MGNREGS · Annexure B</title>
+
+  <!-- PWA Meta & Icons -->
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" type="image/svg+xml" href="icon.svg">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <meta name="theme-color" content="#1a7f64">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Annexure B">
+
   <style>
     * {
       margin: 0;
@@ -49,7 +53,29 @@
       margin-bottom: 1.6rem;
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+    }
+    .form-heading img {
+      width: 38px;
+      height: 38px;
+      border-radius: 8px;
+    }
+    .install-pwa-btn {
+      display: none;
+      background: #1a7f64;
+      color: white;
+      border: none;
+      padding: 0.35rem 0.85rem;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-left: 0.4rem;
+      transition: opacity 0.2s;
+    }
+    .install-pwa-btn:hover {
+      opacity: 0.9;
     }
     .form-heading small {
       font-size: 1rem;
@@ -156,13 +182,13 @@
       border-radius: 20px;
       border: 1px solid #e2ebf3;
     }
-    .land-group .land-item {
+    .land-item {
       display: flex;
       align-items: center;
       gap: 0.4rem;
       flex: 1 1 100px;
     }
-    .land-group .land-item input {
+    .land-item input {
       background: white;
       border: 1px solid #d0dbe8;
       border-radius: 40px;
@@ -171,12 +197,12 @@
       font-size: 0.95rem;
       text-align: center;
     }
-    .land-group .land-item span {
+    .land-item span {
       font-size: 0.8rem;
       color: #2c4b66;
       font-weight: 500;
     }
-    .land-group .land-result {
+    .land-result {
       background: #e1f0ea;
       border-radius: 40px;
       padding: 0.4rem 1.2rem;
@@ -187,7 +213,7 @@
       border: 1px solid #b5d3ca;
       text-align: center;
     }
-    .land-group .equal-sign {
+    .equal-sign {
       font-weight: 600;
       color: #3f5a72;
       padding: 0 0.2rem;
@@ -249,7 +275,9 @@
 <body>
   <div class="form-card">
     <div class="form-heading">
+      <img src="icon.svg" alt="App Logo">
       Annexure B · Entry
+      <button class="install-pwa-btn" id="installBtn" type="button">⬇️ Install</button>
       <small>Viksit Bharat</small>
     </div>
 
@@ -369,6 +397,34 @@
   </div>
 
   <script>
+    // Register Service Worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('./sw.js').catch(console.error);
+      });
+    }
+
+    // PWA Install Prompt handling
+    let installPrompt = null;
+    const installBtn = document.getElementById('installBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      installPrompt = e;
+      installBtn.style.display = 'inline-block';
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (!installPrompt) return;
+      installPrompt.prompt();
+      const { outcome } = await installPrompt.userChoice;
+      if (outcome === 'accepted') {
+        installBtn.style.display = 'none';
+      }
+      installPrompt = null;
+    });
+
+    // Land Calculation
     function calculateCent() {
       var ares = parseFloat(document.getElementById('land_ares').value) || 0;
       var sqm = parseFloat(document.getElementById('land_sqm').value) || 0;
@@ -440,6 +496,7 @@
         <head>
           <meta charset="UTF-8">
           <title>Annexure B · Preview</title>
+          <link rel="icon" type="image/svg+xml" href="icon.svg">
           <style>
             @page { size: A4 portrait; margin: 15mm; }
             * { box-sizing: border-box; }
