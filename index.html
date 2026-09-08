@@ -4,6 +4,20 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>MGNREGS · Annexure B</title>
+
+  <!-- PWA & Mobile Meta Tags -->
+  <meta name="theme-color" content="#1a7f64">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Annexure B">
+  
+  <!-- Inline SVG App Icon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a7f64'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='50' fill='white'>📄</text></svg>">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231a7f64'/><text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle' font-size='50' fill='white'>📄</text></svg>">
+
+  <!-- Embedded Web App Manifest via Data URI -->
+  <link rel="manifest" href="data:application/manifest+json;utf8,%7B%22name%22%3A%22MGNREGS%20Annexure%20B%22%2C%22short_name%22%3A%22Annexure%20B%22%2C%22start_url%22%3A%22.%22%2C%22display%22%3A%22standalone%22%2C%22background_color%22%3A%22%23f0f4f9%22%2C%22theme_color%22%3A%22%231a7f64%22%2C%22icons%22%3A%5B%7B%22src%22%3A%22data%3Aimage%2Fsvg%2Bxml%2C%3Csvg%20xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%27%20viewBox%3D%270%200%20100%20100%27%3E%3Crect%20width%3D%27100%27%20height%3D%27100%27%20rx%3D%2720%27%20fill%3D%27%231a7f64%27%2F%3E%3Ctext%20x%3D%2750%25%27%20y%3D%2755%25%27%20dominant-baseline%3D%27middle%27%20text-anchor%3D%27middle%27%20font-size%3D%2750%27%20fill%3D%27white%27%3E%F0%9F%93%84%3C%2Ftext%3E%3C%2Fsvg%3E%22%2C%22sizes%22%3A%22512x512%22%2C%22type%22%3A%22image%2Fsvg%2Bxml%22%2C%22purpose%22%3A%22any%20maskable%22%7D%5D%7D">
+
   <style>
     * {
       margin: 0;
@@ -19,7 +33,7 @@
       line-height: 1.5;
     }
 
-    /* card */
+    /* Card */
     .form-card {
       max-width: 880px;
       margin: 0 auto;
@@ -28,11 +42,8 @@
       padding: 2.2rem 2.5rem;
       box-shadow: 0 20px 40px -12px rgba(0, 20, 40, 0.20), 0 8px 24px -6px rgba(0, 0, 0, 0.05);
       border: 1px solid rgba(255, 255, 255, 0.5);
-      backdrop-filter: blur(2px);
-      transition: all 0.2s;
     }
 
-    /* heading */
     .form-heading {
       font-size: 1.9rem;
       font-weight: 600;
@@ -56,7 +67,6 @@
       letter-spacing: 0.3px;
     }
 
-    /* section header */
     .section-header {
       font-size: 0.9rem;
       font-weight: 600;
@@ -79,7 +89,6 @@
       color: #0f4d41;
     }
 
-    /* grid */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -94,7 +103,6 @@
       grid-column: 1 / -1;
     }
 
-    /* form elements */
     .field {
       display: flex;
       flex-direction: column;
@@ -139,7 +147,6 @@
       min-height: 60px;
     }
 
-    /* inline group for land */
     .land-group {
       display: flex;
       flex-wrap: wrap;
@@ -150,13 +157,13 @@
       border-radius: 20px;
       border: 1px solid #e2ebf3;
     }
-    .land-group .land-item {
+    .land-item {
       display: flex;
       align-items: center;
       gap: 0.4rem;
       flex: 1 1 100px;
     }
-    .land-group .land-item input {
+    .land-item input {
       background: white;
       border: 1px solid #d0dbe8;
       border-radius: 40px;
@@ -165,12 +172,12 @@
       font-size: 0.95rem;
       text-align: center;
     }
-    .land-group .land-item span {
+    .land-item span {
       font-size: 0.8rem;
       color: #2c4b66;
       font-weight: 500;
     }
-    .land-group .land-result {
+    .land-result {
       background: #e1f0ea;
       border-radius: 40px;
       padding: 0.4rem 1.2rem;
@@ -181,13 +188,12 @@
       border: 1px solid #b5d3ca;
       text-align: center;
     }
-    .land-group .equal-sign {
+    .equal-sign {
       font-weight: 600;
       color: #3f5a72;
       padding: 0 0.2rem;
     }
 
-    /* buttons row */
     .actions {
       display: flex;
       flex-wrap: wrap;
@@ -196,7 +202,7 @@
       padding-top: 1.2rem;
       border-top: 1px solid #dfe8f2;
     }
-    .actions button {
+    .btn-main {
       border: none;
       background: #1b4f7a;
       color: white;
@@ -205,45 +211,103 @@
       font-weight: 600;
       font-size: 1rem;
       cursor: pointer;
-      transition: 0.2s;
       display: inline-flex;
       align-items: center;
+      justify-content: center;
       gap: 0.4rem;
       width: 100%;
-      justify-content: center;
       letter-spacing: 0.3px;
       box-shadow: 0 4px 8px -4px rgba(27, 79, 122, 0.3);
+      transition: 0.2s;
     }
-    .actions button:hover {
+    .btn-main:hover {
       background: #123d5f;
-      transform: scale(0.99);
+    }
+
+    /* PWA Install Button */
+    #pwaInstallBtn {
+      display: none;
+      background: #1a7f64;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.9rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      font-weight: 600;
+      margin-left: 0.5rem;
+    }
+
+    /* In-App Preview Overlay (Crucial for installed PWAs) */
+    #previewOverlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #525659;
+      z-index: 9999;
+      overflow-y: auto;
+    }
+    .action-bar {
+      position: sticky;
+      top: 0;
+      background: #1a2633;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      z-index: 10000;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+      flex-wrap: wrap;
+    }
+    .btn-preview {
+      padding: 9px 22px;
+      font-size: 14px;
+      font-weight: 600;
+      border: none;
+      border-radius: 60px;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+    .btn-copy { background: #1a7f64; color: white; }
+    .btn-print { background: #2a9d8f; color: white; }
+    .btn-close { background: #c44545; color: white; }
+    .btn-preview:hover { opacity: 0.9; transform: scale(0.98); }
+
+    .a4-page {
+      width: 210mm;
+      max-width: 95vw;
+      min-height: 297mm;
+      margin: 20px auto;
+      background: #fff;
+      padding: 20mm;
+      box-shadow: 0 0 12px rgba(0,0,0,0.3);
+    }
+    .doc-content { font-size: 14px; line-height: 1.6; max-width: 680px; margin: auto; }
+    .doc-content hr { border: 0; border-top: 1px solid #222; margin: 14px 0; }
+
+    @media print {
+      body * { visibility: hidden !important; }
+      #previewOverlay, #previewOverlay * { visibility: visible !important; }
+      #previewOverlay { position: absolute; left: 0; top: 0; background: #fff !important; }
+      .action-bar { display: none !important; }
+      .a4-page { width: 100% !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; }
     }
 
     @media (max-width: 680px) {
-      .form-card {
-        padding: 1.5rem 1rem;
-      }
-      .grid-2, .grid-3 {
-        grid-template-columns: 1fr;
-        gap: 0.8rem;
-      }
-      .land-group {
-        flex-direction: column;
-        align-items: stretch;
-      }
-      .land-group .land-item {
-        flex: 1 1 auto;
-      }
-      .land-group .land-item input {
-        width: 100%;
-      }
+      .form-card { padding: 1.5rem 1rem; }
+      .grid-2, .grid-3 { grid-template-columns: 1fr; gap: 0.8rem; }
+      .land-group { flex-direction: column; align-items: stretch; }
+      .land-item input { width: 100%; }
+      .a4-page { padding: 15px; }
     }
   </style>
 </head>
 <body>
+
   <div class="form-card">
     <div class="form-heading">
       Annexure B · Entry
+      <button id="pwaInstallBtn" type="button">⬇️ Install App</button>
       <small>Viksit Bharat</small>
     </div>
 
@@ -355,50 +419,105 @@
         </div>
       </div>
 
-      <!-- Single Action Button -->
+      <!-- Submit / Open Preview -->
       <div class="actions">
-        <button type="button" onclick="generatePreview()">Next → Open Preview</button>
+        <button type="button" class="btn-main" onclick="openInAppPreview()">Next → Open Preview</button>
       </div>
     </form>
   </div>
 
+  <!-- In-App Preview Overlay -->
+  <div id="previewOverlay">
+    <div class="action-bar">
+      <button class="btn-preview btn-copy" id="previewCopyBtn" onclick="copyDocumentText()">📋 Copy for Word/KSMART</button>
+      <button class="btn-preview btn-print" onclick="window.print()">🖨️ Print</button>
+      <button class="btn-preview btn-close" onclick="closeInAppPreview()">Close</button>
+    </div>
+    <div class="a4-page">
+      <div id="previewRenderBody"></div>
+    </div>
+  </div>
+
   <script>
+    // --- PWA Installation & Service Worker Registration ---
+    let deferredPrompt;
+    const installBtn = document.getElementById('pwaInstallBtn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+      e.preventDefault();
+      deferredPrompt = e;
+      installBtn.style.display = 'inline-block';
+    });
+
+    installBtn.addEventListener('click', async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        const { outcome } = await deferredPrompt.userChoice;
+        if (outcome === 'accepted') {
+          installBtn.style.display = 'none';
+        }
+        deferredPrompt = null;
+      }
+    });
+
+    // Register an offline Cache-first Service Worker via Blob
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        const swCode = `
+          const CACHE_NAME = 'annexure-b-v1';
+          self.addEventListener('install', (e) => {
+            self.skipWaiting();
+          });
+          self.addEventListener('activate', (e) => {
+            e.waitUntil(clients.claim());
+          });
+          self.addEventListener('fetch', (e) => {
+            e.respondWith(
+              caches.match(e.request).then((res) => res || fetch(e.request).catch(() => caches.match(e.request)))
+            );
+          });
+        `;
+        const blob = new Blob([swCode], { type: 'application/javascript' });
+        navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(console.error);
+      });
+    }
+
+    // --- Calculation & Date Formatter ---
     function calculateCent() {
-      var ares = parseFloat(document.getElementById('land_ares').value) || 0;
-      var sqm = parseFloat(document.getElementById('land_sqm').value) || 0;
-      var totalSqMeters = (ares * 100) + sqm;
-      var cent = totalSqMeters / 40.4686;
-      var acre = cent / 100;
-      var resultText = (cent > 0) ? cent.toFixed(2) + " Cent (" + acre.toFixed(2) + " acre)" : "0 Cent (0.00 acre)";
+      const ares = parseFloat(document.getElementById('land_ares').value) || 0;
+      const sqm = parseFloat(document.getElementById('land_sqm').value) || 0;
+      const totalSqMeters = (ares * 100) + sqm;
+      const cent = totalSqMeters / 40.4686;
+      const acre = cent / 100;
+      const resultText = (cent > 0) ? `${cent.toFixed(2)} Cent (${acre.toFixed(2)} acre)` : "0 Cent (0.00 acre)";
       document.getElementById('calculated_cent').textContent = resultText;
       return resultText;
     }
 
     function formatDisplayDate(dateString) {
       if (!dateString) return "";
-      var parts = dateString.split('-');
-      return (parts.length === 3) ? parts[2] + '/' + parts[1] + '/' + parts[0] : dateString;
+      const parts = dateString.split('-');
+      return (parts.length === 3) ? `${parts[2]}/${parts[1]}/${parts[0]}` : dateString;
     }
 
     function buildDocumentHTML() {
-      var p = document.getElementById('panchayath').value;
-      var b = document.getElementById('block').value;
-      var d = document.getElementById('district').value;
-      var s = document.getElementById('state').value;
-      var res = document.getElementById('res').value;
-      var page = document.getElementById('page').value;
-      var rawDate = document.getElementById('date').value;
-      var dt = formatDisplayDate(rawDate);
-      var type = document.getElementById('type').value;
-      var work = document.getElementById('work').value;
-      var name = document.getElementById('name').value;
-      var job = document.getElementById('job').value;
-      var land = calculateCent();
-      var khata = document.getElementById('khata').value;
-      var asset = document.getElementById('asset').value;
+      const p = document.getElementById('panchayath').value;
+      const b = document.getElementById('block').value;
+      const d = document.getElementById('district').value;
+      const s = document.getElementById('state').value;
+      const res = document.getElementById('res').value;
+      const page = document.getElementById('page').value;
+      const dt = formatDisplayDate(document.getElementById('date').value);
+      const type = document.getElementById('type').value;
+      const work = document.getElementById('work').value;
+      const name = document.getElementById('name').value;
+      const job = document.getElementById('job').value;
+      const land = calculateCent();
+      const khata = document.getElementById('khata').value;
+      const asset = document.getElementById('asset').value;
 
       return `
-<div class="doc-content" id="printable-content">
+<div class="doc-content" id="docContentCopyTarget">
   <p style="text-align:center; font-weight:700; font-size:16px; margin:0 0 2px 0;">Annexure B</p>
   <p style="text-align:center; font-weight:600; font-size:14px; margin:0 0 10px 0;">Undertaking for Individual Beneficiary Works under Viksit Bharat – Guarantee for Rozgar &amp; Ajeevika Mission (Gramin)</p>
   <hr>
@@ -418,93 +537,40 @@
 </div>`;
     }
 
-    function generatePreview() {
-      var form = document.getElementById('annexureForm');
-      if (!form.checkValidity()) { 
-        form.reportValidity(); 
-        return; 
+    // --- Preview and Clipboard Logic ---
+    function openInAppPreview() {
+      const form = document.getElementById('annexureForm');
+      if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
       }
+      document.getElementById('previewRenderBody').innerHTML = buildDocumentHTML();
+      document.getElementById('previewOverlay').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
 
-      var contentHTML = buildDocumentHTML();
-      var previewWindow = window.open('', '_blank');
+    function closeInAppPreview() {
+      document.getElementById('previewOverlay').style.display = 'none';
+    }
 
-      var previewDoc = `
-        <!DOCTYPE html>
-        <html lang="en">
-        <head>
-          <meta charset="UTF-8">
-          <title>Annexure B · Preview</title>
-          <style>
-            @page { size: A4 portrait; margin: 15mm; }
-            * { box-sizing: border-box; }
-            body { 
-              margin: 0; padding: 0; background: #525659; 
-              font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-              font-size: 13px; color: #000; line-height: 1.5;
-            }
-            .action-bar {
-              position: sticky; top: 0; background: #1a2633; padding: 12px 16px;
-              display: flex; justify-content: center; gap: 14px; z-index: 100;
-              box-shadow: 0 2px 8px rgba(0,0,0,0.4); flex-wrap: wrap;
-            }
-            .btn-preview {
-              padding: 9px 24px; font-size: 14px; font-weight: 600; border: none;
-              border-radius: 60px; cursor: pointer; transition: 0.15s;
-              display: inline-flex; align-items: center; gap: 6px;
-            }
-            .btn-copy { background: #1a7f64; color: white; }
-            .btn-print { background: #2a9d8f; color: white; }
-            .btn-close { background: #c44545; color: white; }
-            .btn-preview:hover { transform: scale(0.97); opacity: 0.92; }
-            .a4-page {
-              width: 210mm; min-height: 297mm; margin: 20px auto;
-              background: #fff; padding: 20mm; box-shadow: 0 0 12px rgba(0,0,0,0.3);
-            }
-            .doc-content { font-size: 14px; line-height: 1.6; max-width: 680px; margin: auto; }
-            .doc-content hr { border: 0; border-top: 1px solid #222; margin: 14px 0; }
-            @media print {
-              .action-bar { display: none !important; }
-              body { background: none !important; }
-              .a4-page { width: 100% !important; min-height: auto !important; margin: 0 !important; padding: 0 !important; box-shadow: none !important; }
-            }
-          </style>
-        </head>
-        <body>
-          <div class="action-bar">
-            <button class="btn-preview btn-copy" id="copyBtn" onclick="copyContent()">📋 Copy for Word/KSMART</button>
-            <button class="btn-preview btn-print" onclick="window.print()">🖨️ Print</button>
-            <button class="btn-preview btn-close" onclick="window.close()">Close</button>
-          </div>
-          <div class="a4-page">
-            ${contentHTML}
-          </div>
-          <script>
-            function copyContent() {
-              var target = document.getElementById('printable-content');
-              var range = document.createRange();
-              range.selectNodeContents(target);
-              var sel = window.getSelection();
-              sel.removeAllRanges();
-              sel.addRange(range);
-              try {
-                document.execCommand('copy');
-                var btn = document.getElementById('copyBtn');
-                var original = btn.textContent;
-                btn.textContent = "✅ Copied!";
-                setTimeout(function() { btn.textContent = original; }, 2000);
-              } catch (e) {
-                alert("Failed to copy automatically. Please select text manually.");
-              } finally {
-                sel.removeAllRanges();
-              }
-            }
-          <\/script>
-        </body>
-        </html>`;
-
-      previewWindow.document.open();
-      previewWindow.document.write(previewDoc);
-      previewWindow.document.close();
+    function copyDocumentText() {
+      const target = document.getElementById('docContentCopyTarget');
+      const range = document.createRange();
+      range.selectNodeContents(target);
+      const sel = window.getSelection();
+      sel.removeAllRanges();
+      sel.addRange(range);
+      try {
+        document.execCommand('copy');
+        const btn = document.getElementById('previewCopyBtn');
+        const original = btn.textContent;
+        btn.textContent = "✅ Copied!";
+        setTimeout(() => { btn.textContent = original; }, 2000);
+      } catch (err) {
+        alert("Failed to copy automatically. Please select text manually.");
+      } finally {
+        sel.removeAllRanges();
+      }
     }
 
     window.addEventListener('DOMContentLoaded', calculateCent);
