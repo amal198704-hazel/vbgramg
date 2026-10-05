@@ -1,4 +1,4 @@
-const CACHE_NAME = 'annexure-b-v2';
+const CACHE_NAME = 'annexure-b-v3';
 const STATIC_ASSETS = [
   './',
   './index.html',
